@@ -1,0 +1,47 @@
+// err := app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
+// 当配置此项 如果web服务器 出现异常 我们将返回nil.
+// 参考`Configuration的IgnoreServerErrors方法
+// 地址: https://github.com/kataras/iris/tree/master/_examples/http-listening/listen-addr/omit-server-errors
+func WithoutServerError(errors ...error) Configurator
+
+// 当主服务器打开时，是否显示启动信息 如下
+//Now listening on: http://localhost:8080
+// Application started. Press CTRL+C to shut down.
+
+var WithoutStartupLog
+
+//当按下ctrl+C 时 禁止关闭当前程序(不会中止程序的运行)
+var WithoutInterruptHandler
+
+//路径重新定义(默认关闭)比如当访问/user/info 当该路径不存在的时候自动访问/user对应的handler
+var WithoutPathCorrection
+
+//如果此字段设置为true，则将创建一个新缓冲区以从请求主体读取。
+var WithoutBodyConsumptionOnUnmarshal
+
+//如果为true则关闭http错误状态代码处理程序自动执行
+var WithoutAutoFireStatusCode
+
+//转义路径
+var WithPathEscape
+
+//开启优化
+var WithOptimizations
+
+//不允许重新指向方法
+var WithFireMethodNotAllowed
+
+//设置时间格式
+func WithTimeFormat(timeformat string) Configurator
+
+//设值程序字符集
+func WithCharset(charset string) Configurator
+
+//启用或添加新的或现有的请求标头名称
+func WithRemoteAddrHeader(headerName string) Configurator
+
+//取消现有的请求标头名称
+func WithoutRemoteAddrHeader(headerName string) Configurator
+
+//自定义配置 key=>value
+func WithOtherValue(key string, val interface{}) Configurator
